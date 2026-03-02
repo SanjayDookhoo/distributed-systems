@@ -34,7 +34,10 @@ app.get("/photos/:id", async (req, res) => {
   res.json(data)
 })
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 app.get("/machine_name", async (req, res) => {
+  await sleep(3000);
   res.json({machine_name: process.env.MACHINE_NAME})
 })
 
