@@ -2,6 +2,7 @@ import express from "express"
 import axios from "axios"
 import cors from "cors"
 import Redis from "redis"
+import 'dotenv/config'
 
 const redisClient= Redis.createClient()
 redisClient.on("error", (err) => console.error("Redis Client Error", err));
@@ -31,6 +32,10 @@ app.get("/photos/:id", async (req, res) => {
   )
 
   res.json(data)
+})
+
+app.get("/machine_name", async (req, res) => {
+  res.json({machine_name: process.env.MACHINE_NAME})
 })
 
 // app.get("/photos", async (req, res) => {
